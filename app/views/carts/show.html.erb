@@ -4,6 +4,14 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if cart.empty? %>
+    <div class="order-summary jumbotron">
+    <h3>Your cart is empty!</h3>
+    <h4>You will need to put some items in your cart before you can check out</h4>
+    </div>
+    <%= link_to "Return to Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -49,5 +57,6 @@
       <% end %>
     </div>
   </div>
+<% end %>
 
 </section>
