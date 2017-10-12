@@ -1,2 +1,10 @@
-Hi <%= @order.name %>
-Sample mail sent using smtp.
+Hi <%= @order.email %>,
+Thank you for your order! Here are your order details:
+<% @order.line_items.each do |item| %>
+  Product: <%= item.product.name %>
+  Quantity: <%= item.quantity %>
+  Price: $<%= item.item_price %>
+  Subtotal of items: $<%= item.total_price %>
+   
+  <% end %>
+  Order total: $<%= @order.total_cents / 100 %>

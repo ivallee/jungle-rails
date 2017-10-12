@@ -5,8 +5,20 @@
   </head>
   <body>
     <h1>Hi <%= @order.email %></h1>
+    <p>Thank you for your order! Here are your order details:</p>
+    <% @order.line_items.each do |item| %>
     <p>
-      Sample mail sent using smtp.
+      Product: <%= item.product.name %>
+      <br>
+      Quantity: <%= item.quantity %>
+      <br>
+      Price: $<%= item.item_price %>
+      <br>
+      Subtotal of items: $<%= item.total_price %>
+      <br>
     </p>
+   
+      <p>Order total: $<%= @order.total_cents / 100 %></p>
+    <% end %>
   </body>
 </html>
