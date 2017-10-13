@@ -25,6 +25,18 @@
         </dl>
       </div>
     </div>
+    <div class="row">
+    <% @product.reviews.each do |r| %>
+      <h4><%= r.user.name %>
+      <% r.rating.times do |i| %>
+        <%= fa_icon "star" %>
+      <% end %>
+      </h4>
+      <p><%= r.description %></p>
+
+    <% end %>
+
+    </div>
 
   </article>
 
