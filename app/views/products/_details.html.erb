@@ -1,0 +1,49 @@
+<div class="row">
+
+  <div class="col-sm-4">
+    <%= image_tag @product.image.url, class: 'main-img' %>
+  </div>
+
+  <div class="col-sm-8">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @product.name %></dd>
+      <dt>Description</dt>
+      <dd><%= @product.description %></dd>
+      <dt>Quantity</dt>
+      <dd><%= @product.quantity %></dd>
+      <dt>Price</dt>
+      <dd><%= @product.price %></dd>
+    </dl>
+  </div>
+  </div>
+  <h3>Product Reviews:</h3>
+  <div class="row">
+    <div class="well">
+      <% if current_user %>
+          <div class="form-group">
+            <%= form_for [@product, @review] do |f| %>
+              <%= f.label "Write a review for this product!"  %>
+              <%= f.text_area :description, class: "form-control" %>
+              <%= f.label "Your rating:"  %>
+              <%= f.select :rating, options_for_select([1,2,3,4,5]), {}, class: "form-control" %>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+      <% else %>
+          <h4>Please <%= link_to "log in", '/login' %> or <%= link_to 'register', '/users/new' %> to write a review</h4>
+      <% end %>
+      </div>
+    </div>
+<% @product.reviews.order(created_at: :desc).each do |r| %>
+  <h4>
+  <%= r.user.name %>
+  <% r.rating.times do |i| %>
+    <%= fa_icon "star" %>
+    <% end %>
+    <% if current_user && current_user.id == r.user_id %>
+      <%= link_to fa_icon('trash'), r, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+  </h4>
+  <p><%= r.description %></p>
+<% end %>
+</div>
