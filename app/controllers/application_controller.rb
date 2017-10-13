@@ -11,27 +11,33 @@ class ApplicationController < ActionController::Base
  
   
   private
-  def authenticate_admin
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+    
+    def authorize
+      redirect_to '/login' unless current_user
     end
-  end
-  helper_method :authenticate_admin
-  
+    helper_method :authorize
+
+    def authenticate_admin
+      authenticate_or_request_with_http_basic do |username, password|
+        username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+      end
+    end
+    helper_method :authenticate_admin
+    
 
 
-  def cart
-    # value = cookies[:cart] || JSON.generate({})
-    @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
-  end
-  helper_method :cart
+    def cart
+      # value = cookies[:cart] || JSON.generate({})
+      @cart ||= cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}
+    end
+    helper_method :cart
 
-  def update_cart(new_cart)
-    cookies[:cart] = {
-      value: JSON.generate(new_cart),
-      expires: 10.days.from_now
-    }
-    cookies[:cart]
-  end
+    def update_cart(new_cart)
+      cookies[:cart] = {
+        value: JSON.generate(new_cart),
+        expires: 10.days.from_now
+      }
+      cookies[:cart]
+    end
 
 end
