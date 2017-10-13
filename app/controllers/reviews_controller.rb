@@ -7,9 +7,10 @@ class ReviewsController < ApplicationController
     @review.save
     if @review.save
       redirect_to :back
+    else
+      redirect_to :back
     end
   end
-
 
   private
   def review_params
