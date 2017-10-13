@@ -39,7 +39,7 @@
         </div>
       </div>
     <h3>Reviews</h3>
-    <% @product.reviews.each do |r| %>
+    <% @product.reviews.order(created_at: :desc).each do |r| %>
       <h4><%= r.user.name %>
       <% r.rating.times do |i| %>
         <%= fa_icon "star" %>
