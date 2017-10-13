@@ -44,7 +44,10 @@
         </div>
     <% @product.reviews.order(created_at: :desc).each do |r| %>
       <h4>
-        <%= r.user.name %>
+      <%= r.user.name %>
+      <% if current_user.id == r.user_id %>
+      <%= link_to fa_icon('trash'), r, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+       <% end %>
         <% r.rating.times do |i| %>
           <%= fa_icon "star" %>
         <% end %>

@@ -14,9 +14,14 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def destroy
-
+    @review = Review.find(params[:id])
+    if current_user.id == @review.user_id
+      @review.destroy
+      redirect_to :back
+    else
+      redirect_to :back
+    end
   end
 
   private
