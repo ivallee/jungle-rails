@@ -45,12 +45,12 @@
     <% @product.reviews.order(created_at: :desc).each do |r| %>
       <h4>
       <%= r.user.name %>
-      <% if current_user.id == r.user_id %>
-      <%= link_to fa_icon('trash'), r, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-       <% end %>
-        <% r.rating.times do |i| %>
-          <%= fa_icon "star" %>
+      <% r.rating.times do |i| %>
+        <%= fa_icon "star" %>
         <% end %>
+        <% if current_user && current_user.id == r.user_id %>
+          <%= link_to fa_icon('trash'), r, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+         <% end %>
       </h4>
       <p><%= r.description %></p>
     <% end %>
