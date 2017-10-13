@@ -26,6 +26,19 @@
       </div>
     </div>
     <div class="row">
+      <div class="well">
+        <div class="form-group">
+          <%= form_for [@product, @review] do |f| %>
+            <%= f.label :description  %>
+            <%= f.text_field :description, class: "form-control" %>
+            <%= f.select :rating, options_for_select([1,2,3,4,5]) %>
+
+            <%= f.submit class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+      </div>
+    <h3>Reviews</h3>
     <% @product.reviews.each do |r| %>
       <h4><%= r.user.name %>
       <% r.rating.times do |i| %>
