@@ -5,12 +5,14 @@
       <h4><%= product.name %></h4>
     <% end %>
   </header>
-  <p>
-  Average rating: 
-  <% product.reviews.average(:rating).to_i.times do |i| %>
-    <%= fa_icon "star" %>
-    <% end %>
-  </p>
+  <% if product.reviews.count > 0 %>
+    <p>
+    Average rating: 
+    <% product.reviews.average(:rating).to_i.times do |i| %>
+      <%= fa_icon "star" %>
+      <% end %>
+    </p>
+  <% end %>
   <p class="description">
     <%= product.description %>
   </p>
