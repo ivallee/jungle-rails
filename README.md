@@ -2,6 +2,11 @@
 
 A mini e-commerce application built with Rails 4.2. A student project to simulate inheriting a pre-existing codebase, where students add new features to the app.
 
+## Screenshots
+
+Inline-style: 
+![Main product page](https://github.com/ivallee/jungle-rails/blob/master/docs/screen1.png?raw=true "Logo Title Text 1")
+
 
 ## Setup
 
