@@ -4,8 +4,17 @@ A mini e-commerce application built with Rails 4.2. A student project to simulat
 
 ## Screenshots
 
-Inline-style: 
-![Main product page](https://github.com/ivallee/jungle-rails/blob/master/docs/screen1.png?raw=true "Logo Title Text 1")
+Main product page: 
+![Main product page](https://github.com/ivallee/jungle-rails/blob/master/docs/screen1.png?raw=true)
+
+Product detail: 
+![Product detail](https://github.com/ivallee/jungle-rails/blob/master/docs/screen2.png?raw=true)
+
+Cart page: 
+![Cart page](https://github.com/ivallee/jungle-rails/blob/master/docs/screen3.png?raw=true)
+
+Admin product page: 
+![Admin product page](https://github.com/ivallee/jungle-rails/blob/master/docs/screen4.png?raw=true)
 
 
 ## Setup
