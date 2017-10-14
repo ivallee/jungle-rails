@@ -1,11 +1,11 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2. A student project to simulate inheriting a pre-existing codebase, where students add new features to the app.
 
 
 ## Setup
 
-1. Fork & Clone
+1. Clone the repository
 2. Run `bundle install` to install dependencies
 3. Create `config/database.yml` by copying `config/database.example.yml`
 4. Create `config/secrets.yml` by copying `config/secrets.example.yml`
@@ -17,7 +17,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Stripe Testing
 
-Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
+Use Credit Card # 4111 1111 1111 1111 for testing success scenarios. Enter expiry date after today and and CVV above 0
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
