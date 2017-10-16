@@ -19,8 +19,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'should be invalid if email is not unique' do
-        @user1 = User.create(name: 'a', email: 'a@a.a', password: 'a', password_confirmation: 'a')
-        @user2 = User.new(name: 'a', email: 'a@A.a', password: 'a', password_confirmation: 'a')
+        @user1 = User.create(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
+        @user2 = User.new(name: 'a', email: 'a@A.a', password: '1234', password_confirmation: '1234')
         expect(@user2).to_not be_valid
         expect(@user2.errors.full_messages).to include('Email has already been taken')
       end
@@ -42,6 +42,12 @@ RSpec.describe User, type: :model do
         expect(@user).to_not be_valid
         expect(@user.errors.full_messages).to include('Password confirmation doesn\'t match Password')
       end
+      it 'should be invalid when password is less than 4 characters' do
+        @user = User.new(name: 'a', email: 'a@a.a', password: '123', password_confirmation: '123')
+        expect(@user).to_not be_valid
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 4 characters)')
+      end
+
     end
 
   end
