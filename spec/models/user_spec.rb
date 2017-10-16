@@ -49,16 +49,31 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe '.authenticate' do
-    it 'returns the user if authentication succeeds' do
-      @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
-      expect(@user.authenticate('1234')).to eq(@user)
+  
+  describe 'Authentication' do
+    
+    context '.authenticate_with_credentials' do
+      it 'returns the user if login email is wrong case' do
+      @user = User.create!(name: 'a', email: 'example@example.com', password: '1234', password_confirmation: '1234')
+      expect(User.authenticate_with_credentials('eXaMpLe@ExAmPlE.cOm', '1234')).to eq(@user)
+      end
+      it 'returns false if login email is invalid' do
+        @user = User.create!(name: 'a', email: 'example@example.com', password: '1234', password_confirmation: '1234')
+        expect(User.authenticate_with_credentials('notexample@notexample.com', '1234')).to be_falsey
+        end
     end
-    it 'returns false if authentication fails' do
-      @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
-      expect(@user.authenticate('1111')).to be_falsey
+
+    context '#authenticate' do
+      it 'returns the user if password matches' do
+        @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
+        expect(@user.authenticate('1234')).to eq(@user)
+      end
+      it 'returns false if password does not match' do
+        @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
+        expect(@user.authenticate('1111')).to be_falsey
+      end
     end
   end
+
 
 end
