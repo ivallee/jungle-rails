@@ -55,6 +55,10 @@ RSpec.describe User, type: :model do
       @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
       expect(@user.authenticate('1234')).to eq(@user)
     end
+    it 'returns false if authentication fails' do
+      @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
+      expect(@user.authenticate('1111')).to be_falsey
+    end
   end
 
 end
