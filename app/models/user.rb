@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :reviews
 
   validates :name, presence: true
-  validates :email, uniqueness: true
+  validates :email, presence: true
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :password_confirmation, presence: true
   
 end
