@@ -47,9 +47,14 @@ RSpec.describe User, type: :model do
         expect(@user).to_not be_valid
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 4 characters)')
       end
-
     end
+  end
 
+  describe '.authenticate' do
+    it 'returns the user if authentication succeeds' do
+      @user = User.create!(name: 'a', email: 'a@a.a', password: '1234', password_confirmation: '1234')
+      expect(@user.authenticate('1234')).to eq(@user)
+    end
   end
 
 end
