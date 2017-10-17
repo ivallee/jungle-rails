@@ -20,7 +20,7 @@ RSpec.feature "User navigates from homepage to product detail page", type: :feat
     first('article.product').find_link('Details').click
     
     expect(page).to have_content 'Product Reviews:'
-    save_screenshot 'product-detail.png'
+    # save_screenshot 'product-detail.png'
 
   end
 

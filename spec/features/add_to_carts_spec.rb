@@ -19,7 +19,8 @@ RSpec.feature 'A visitor can add items to the cart', type: :feature, js: true do
 
       visit root_path
       first('article.product').find_link('Add').click
-      save_screenshot 'cart.png'
+      
+      # save_screenshot 'cart.png'
 
       expect(page).to have_link 'My Cart (1)'
 
