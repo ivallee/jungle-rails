@@ -29,9 +29,10 @@ RSpec.describe Order, type: :model do
       @order.save!
       # 4. reload products to have their updated quantities
       @product1.reload
-      # @product2.reload
+      @product2.reload
       # 5. use RSpec expect syntax to assert their new quantity values
       expect(@product1.quantity).to eq(11)
+      expect(@product2.quantity).to eq(4)
     end
     # pending test 2
     xit 'does not deduct quantity from products that are not in the order' do
